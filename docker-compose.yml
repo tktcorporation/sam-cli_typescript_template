@@ -1,0 +1,9 @@
+version: "3"
+services:
+  dynamodb:
+    image: amazon/dynamodb-local
+    environment:
+      - MESSAGES_DYNAMODB_TABLE=TestMessagesTable
+      - DEVICES_DYNAMODB_TABLE=TestDevicesTable
+    ports:
+      - "8000:8000"

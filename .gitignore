@@ -1,0 +1,12 @@
+node_modules
+dist
+*.zip
+
+# AWS SAM
+packaged.yaml
+.aws-sam/
+
+# IDE
+.idea/
+
+.envrc
