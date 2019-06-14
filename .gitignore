@@ -10,3 +10,6 @@ packaged.yaml
 .idea/
 
 .envrc
+
+# vscode
+.history
