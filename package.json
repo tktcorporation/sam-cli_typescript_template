@@ -17,5 +17,7 @@
         "aws-sdk": "^2.480.0",
         "typescript": "^3.5.2"
     },
-    "dependencies": {}
+    "dependencies": {
+        "axios": "^0.18.0"
+    }
 }
