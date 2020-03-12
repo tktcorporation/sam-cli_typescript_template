@@ -1,4 +1,4 @@
-AWSTemplateFormatVersion: '2010-09-09'
+AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: API using NodeJS and Typescript
 
@@ -8,21 +8,20 @@ Parameters:
     Description: The name of the Test API
     MinLength: 3
     MaxLength: 20
-    AllowedPattern: '^[a-zA-Z][a-zA-Z0-9_]*$'
+    AllowedPattern: "^[a-zA-Z][a-zA-Z0-9_]*$"
     Default: TestAPI
 
 Globals:
   Function:
-    Runtime: nodejs10.x
+    Runtime: nodejs12.x
     Timeout: 10
 
 Resources:
-
   HelloWorldFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
       CodeUri: ./handler.zip
-      Handler: hello.handler
+      Handler: index.hello
       Events:
         HelloWorld:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
@@ -31,7 +30,6 @@ Resources:
             Method: get
 
 Outputs:
-
   HelloWorldFunction:
     Description: "Hello World Lambda Function ARN"
     Value: !GetAtt HelloWorldFunction.Arn
