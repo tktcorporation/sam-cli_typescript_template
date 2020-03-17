@@ -1,0 +1,29 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: This CloudFormation template to create S3 Bucket
+
+Parameters:
+  S3BucketName:
+    Description: Type of this BacketName.
+    Type: String
+
+Resources:
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub ${S3BucketName}
+      AccessControl: Private
+  S3BucketPolicy:
+    Type: "AWS::S3::BucketPolicy"
+    Properties:
+      Bucket: !Ref S3Bucket
+      PolicyDocument:
+        Statement:
+          Action:
+            - "s3:GetObject"
+          Effect: "Allow"
+          Resource: !Sub "arn:aws:s3:::${S3BucketName}/*"
+          Principal: "*"
+
+Outputs:
+  S3BucketName:
+    Value: !Ref S3Bucket
