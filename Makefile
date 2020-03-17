@@ -1,4 +1,5 @@
 PROJECT_NAME=test-api
+AWS_REGION=ap-northeast-1
 ENV=dev
 
 default:
@@ -37,5 +38,6 @@ create-s3-bucket:
 		S3BucketName="${PROJECT_NAME}-${ENV}" \
 	--stack-name "${PROJECT_NAME}-${ENV}-s3" \
 	--template cloudformation/s3.yml \
+	--region ${AWS_REGION} \
 	--no-fail-on-empty-changeset
 
