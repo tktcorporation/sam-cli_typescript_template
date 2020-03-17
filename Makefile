@@ -1,4 +1,4 @@
-PROJECT_NAME="sam-cli_typescript_base"
+PROJECT_NAME=test-api
 ENV=dev
 
 default:
@@ -7,7 +7,7 @@ default:
 validate:
 	sam validate
 
-package: bundle
+package:
 	echo "package cloudformation template..."
 	aws cloudformation package \
 		--template-file template.yml \
@@ -18,14 +18,14 @@ package: bundle
 deploy:
 	echo "deploy stack ${PROJECT_NAME}-${ENV}..."
 	sam deploy \
-		--template-file packaged.yaml \
+		--template-file packaged.yml \
 		--stack-name "${PROJECT_NAME}-${ENV}" \
 		--capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM
 
 local-package: validate
 	cd ./app && make package
 
-deploy-stack: local-package create-s3-bucket package deploy
+deploy-stack: create-s3-bucket local-package package deploy
 
 local-api: local-package
 	sam local start-api --debug
@@ -36,4 +36,6 @@ create-s3-bucket:
 	--parameter-overrides \
 		S3BucketName="${PROJECT_NAME}-${ENV}" \
 	--stack-name "${PROJECT_NAME}-${ENV}-s3" \
-	--template cloudformation/s3.yml
+	--template cloudformation/s3.yml \
+	--no-fail-on-empty-changeset
+
