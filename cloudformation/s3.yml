@@ -10,20 +10,30 @@ Resources:
   S3Bucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: !Sub ${S3BucketName}
+      BucketName: !Ref S3BucketName
       AccessControl: Private
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: True
+        BlockPublicPolicy: True
+        IgnorePublicAcls: True
+        RestrictPublicBuckets: True
+
   S3BucketPolicy:
-    Type: "AWS::S3::BucketPolicy"
+    Type: AWS::S3::BucketPolicy
     Properties:
       Bucket: !Ref S3Bucket
       PolicyDocument:
+        Id: S3BucketPolicy
+        Version: "2012-10-17"
         Statement:
-          Action:
-            - "s3:GetObject"
-          Effect: "Allow"
-          Resource: !Sub "arn:aws:s3:::${S3BucketName}/*"
-          Principal: "*"
+          - Sid: XXXS3Acl
+            Effect: Allow
+            Principal: { Service: "cloudformation.amazonaws.com" }
+            Action:
+              - "s3:GetObject"
+            Resource:
+              - !Sub "arn:aws:s3:::${S3BucketName}/*"
 
 Outputs:
-  S3BucketName:
+  S3Bucket:
     Value: !Ref S3Bucket
