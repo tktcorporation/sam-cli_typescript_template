@@ -17,16 +17,10 @@ ex) http://127.0.0.1:3000/hello
 
 ## Packaging and deployment
 
-An S3 bucket must be created before deployment to hold the lambda code:
+Set a project name to PROJECT_NAME in Makefile
 
-```bash
-aws s3 mb s3://BUCKET_NAME
-```
-
-Set the following environment variables:
-```bash
-export S3_BUCKET=
-export STACK_NAME=
+```Makefile
+PROJECT_NAME={ProjectName}
 ```
 
 ```bash
@@ -34,7 +28,7 @@ export STACK_NAME=
 make
 
 # Build, Package and Deploy
-make deploy-stack
+make deploy-stack ENV={dev, prod}
 ```
 
 Individual lambda functions can be tested using the SAM CLI:
