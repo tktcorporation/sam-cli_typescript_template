@@ -11,6 +11,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Test
-        id: test
-        run: make
+      - name: Deploy
+        uses: tkt-actions/aws-sam-cli@v1
+        with:
+          cmd: make deploy-stack ENV=prod
