@@ -21,15 +21,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: "ap-northeast-1"
 
-      - name: Set up Python 3.8
-        uses: actions/setup-python@v1
-        with:
-          python-version: 3.8
-
-      - name: Install SAM CLI
-        id: install-sam-cli
-        run: pip install --upgrade aws-sam-cli
-
       - name: Deploy
-        id: deploy
-        run: make deploy-stack ENV=prod
+        uses: tkt-actions/aws-sam-cli@v1
+        with:
+          cmd: make deploy-stack ENV=prod
