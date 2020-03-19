@@ -1,23 +1,23 @@
 {
-    "compilerOptions": {
-        "target": "es6",
-        "module": "commonjs",
-        "rootDir": "./src",
-        "outDir": "./dist",
-        "lib": ["es5", "es6"],
-        "strict": true,
-        "noImplicitAny": true,
-        "strictNullChecks": true,
-        "types": ["node"],
-        "esModuleInterop": true,
-        "inlineSourceMap": true,
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "resolveJsonModule": true,
-        "baseUrl": ".",
-        "paths": {
-            "*": ["src/@types/*"]
-        }
-    },
-    "include": ["src"]
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "lib": ["es5", "es6"],
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "types": ["node", "mocha"],
+    "esModuleInterop": true,
+    "inlineSourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "*": ["src/@types/*"]
+    }
+  },
+  "include": ["src"]
 }
