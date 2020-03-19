@@ -33,7 +33,7 @@ local-api: local-package
 	# --docker-network sam-app-net
 
 test: validate
-	cd app && npm run test
+	cd app && make test
 
 create-s3-bucket:
 	aws cloudformation deploy \
