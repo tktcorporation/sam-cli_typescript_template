@@ -1,3 +1,8 @@
+# AWS SAM CLI with Typescript
+
+## Structure
+ApiGateway + Lambda with Typescript
+
 ## Requirements
 
 * AWS CLI already configured with Administrator permission
