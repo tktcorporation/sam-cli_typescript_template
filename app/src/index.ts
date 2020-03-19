@@ -1,6 +1,8 @@
-// const axios = require('axios')
-// const url = 'http://checkip.amazonaws.com/';
-let response;
+interface Response {
+    statusCode: number;
+    body: string;
+}
+type Api = (event: any, context: any) => Promise<Response>;
 
 /**
  *
@@ -14,20 +16,20 @@ let response;
  * @returns {Object} object - API Gateway Lambda Proxy Output Format
  *
  */
-export const hello = async (event: any, context: any) => {
+export const hello: Api = async (event: any, context: any) => {
     try {
-        // const ret = await axios(url);
-        response = {
+        return {
             statusCode: 200,
             body: JSON.stringify({
                 message: "hello world"
-                // location: ret.data.trim()
             })
         };
     } catch (err) {
-        // console.log(err);
-        return err;
+        return {
+            statusCode: 500,
+            body: JSON.stringify({
+                message: "Internal Server Error"
+            })
+        };
     }
-
-    return response;
 };
