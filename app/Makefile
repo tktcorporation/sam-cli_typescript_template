@@ -1,14 +1,10 @@
-default: install build test
+default: test build
 
 install:
 	npm install
 
-test:
-	# export DEVICES_DYNAMODB_TABLE=TestDevicesTable
-	# export MESSAGES_DYNAMODB_TABLE=TestMessagesTable
-	# docker-compose up -d
-	# npm test
-	# docker-compose down
+test: clean install
+	npm run test
 
 integration-test:
 	# jest src/integrationTests
@@ -29,4 +25,4 @@ bundle:
 	npm install --production
 	cp -R node_modules dist && cd dist && rm -rf tests && zip -r -q ../../handler.zip .
 
-package: clean install build bundle
+package: clean bundle
