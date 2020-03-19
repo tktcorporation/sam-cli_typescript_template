@@ -32,7 +32,7 @@ local-api: local-package
 	sam local start-api --debug
 	# --docker-network sam-app-net
 
-test:
+test: validate
 	cd app && npm run test
 
 create-s3-bucket:
