@@ -1,8 +1,10 @@
-interface Response {
-    statusCode: number;
-    body: string;
-}
-type Api = (event: any, context: any) => Promise<Response>;
+import { Response } from "./domain/response/Response";
+
+export type Api = (
+    event: any,
+    context: any,
+    callback?: any
+) => Promise<Response>;
 
 /**
  *
@@ -18,18 +20,8 @@ type Api = (event: any, context: any) => Promise<Response>;
  */
 export const hello: Api = async (event: any, context: any) => {
     try {
-        return {
-            statusCode: 200,
-            body: JSON.stringify({
-                message: "hello world"
-            })
-        };
+        return new Response(200, "hello world");
     } catch (err) {
-        return {
-            statusCode: 500,
-            body: JSON.stringify({
-                message: "Internal Server Error"
-            })
-        };
+        return new Response(500, "Internal Server Error");
     }
 };
