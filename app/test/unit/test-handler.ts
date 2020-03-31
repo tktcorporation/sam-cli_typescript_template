@@ -10,9 +10,9 @@ describe("Hello test", () => {
 
         expect(result).to.be.an("object");
         expect(result.statusCode).to.equal(200);
-        expect(result.body.message).to.be.an("string");
+        expect(result.body).to.be.an("string");
 
-        const response = JSON.parse(result.body.toString());
+        const response = JSON.parse(result.body);
 
         expect(response).to.be.an("object");
         expect(response.message).to.be.equal("hello world");
