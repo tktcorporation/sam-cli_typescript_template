@@ -1,4 +1,4 @@
-name: "Issue Reference"
+name: "Issue Link"
 on:
   pull_request:
     types: [opened]
@@ -7,7 +7,7 @@ jobs:
   issue-reference:
     runs-on: ubuntu-latest
     steps:
-      - uses: kentaro-m/add-an-issue-reference-action@v2.0.0
+      - uses: tkt-actions/add-issue-links@v1.0.0
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
           branch-prefix: "issue-"
