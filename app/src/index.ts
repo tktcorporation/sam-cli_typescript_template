@@ -1,4 +1,4 @@
-import { Response } from "./domain/response/Response";
+import { Response } from "@src/domain/response/Response";
 
 export type Api = (
     event: any,
@@ -18,10 +18,5 @@ export type Api = (
  * @returns {Object} object - API Gateway Lambda Proxy Output Format
  *
  */
-export const hello: Api = async (event: any, context: any) => {
-    try {
-        return new Response(200, "hello world");
-    } catch (err) {
-        return new Response(500, "Internal Server Error");
-    }
-};
+export const hello: Api = async (event: any, context: any) =>
+    new Response(200, "hello world");
